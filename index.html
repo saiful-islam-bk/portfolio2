@@ -338,7 +338,7 @@
       </div>
     </section>
 
-    <section id="contact" class="contact">
+<!--     <section id="contact" class="contact">
       <div class="container">
         <div class="contact-title">
           <h2 class="title">Contact</h2>
@@ -384,7 +384,42 @@
         </form>
         <div class="response"></div>
       </div>
-    </section>
+    </section> -->
+    <form
+  class="contactForm"
+  action="https://formspree.io/f/xdkggqlj"  <!-- এই লাইনটা তোমার ফর্মের URL দিয়ে রিপ্লেস করো -->
+  method="POST"
+  data-aos="zoom-in"
+  data-aos-duration="1000"
+>
+  <div class="input-box">
+    <input type="text" name="name" placeholder="Name" required />
+    <input type="email" name="email" placeholder="Email Address" required />
+  </div>
+
+  <textarea
+    name="message"
+    cols="30"
+    rows="10"
+    placeholder="Your Message"
+    required
+  ></textarea>
+
+  <!-- Redirect after submit (optional) -->
+  <input type="hidden" name="_redirect" value="https://saiful-islam-bk.github.io/portfolio2/thanks.html" />
+
+  <div
+    class="contact-button"
+    data-aos="fade-zoom-in"
+    data-aos-easing="ease-in-out"
+    data-aos-delay="500"
+    data-aos-duration="1000"
+  >
+    <button class="btn btn-red" type="submit">
+      Send Message
+    </button>
+  </div>
+</form>
 
     <footer class="footer">
       <div class="container">
