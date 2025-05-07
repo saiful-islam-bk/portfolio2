@@ -338,18 +338,7 @@
       </div>
     </section>
 
-     <section id="contact" class="contact">
-      <div class="container">
-        <div class="contact-title">
-          <h2 class="title">Contact</h2>
-        </div>
-        <div class="contact-content">
-          <p>
-            Tell me about your project.
-            <br />
-            Let's talk and work together!
-          </p>
-        </div>
+     
 
        <!-- <form class="contactForm" data-aos="zoom-in" data-aos-duration="1000">
           <div class="input-box">
@@ -383,43 +372,55 @@
           </div>
         </form>
          -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-title">
+          <h2 class="title">Contact</h2>
+        </div>
+        <div class="contact-content">
+          <p>
+            Tell me about your project.
+            <br />
+            Let's talk and work together!
+          </p>
+        </div>
     <form
-  class="contactForm"
-  action="https://formspree.io/f/xdkggqlj"  <!-- এই লাইনটা তোমার ফর্মের URL দিয়ে রিপ্লেস করো -->
-  method="POST"
-  data-aos="zoom-in"
-  data-aos-duration="1000"
->
-  <div class="input-box">
-    <input type="text" name="name" placeholder="Name" required />
-    <input type="email" name="email" placeholder="Email Address" required />
+      class="contactForm"
+      action="https://formspree.io/f/xdkggqlj"
+      method="POST"
+      data-aos="zoom-in"
+      data-aos-duration="1000"
+    >
+      <div class="input-box">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email Address" required />
+      </div>
+    
+      <textarea
+        name="message"
+        cols="30"
+        rows="10"
+        placeholder="Your Message"
+        required
+      ></textarea>
+    
+      <!-- Redirect after submit (optional) -->
+      <input type="hidden" name="_redirect" value="https://saiful-islam-bk.github.io/portfolio2/thanks.html" />
+    
+      <div
+        class="contact-button"
+        data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-out"
+        data-aos-delay="500"
+        data-aos-duration="1000"
+      >
+        <button class="btn btn-red" type="submit">
+          Send Message
+        </button>
+      </div>
+    </form>
+  <div class="response"></div>
   </div>
-
-  <textarea
-    name="message"
-    cols="30"
-    rows="10"
-    placeholder="Your Message"
-    required
-  ></textarea>
-
-  <!-- Redirect after submit (optional) -->
-  <input type="hidden" name="_redirect" value="https://saiful-islam-bk.github.io/portfolio2/thanks.html" />
-
-  <div
-    class="contact-button"
-    data-aos="fade-zoom-in"
-    data-aos-easing="ease-in-out"
-    data-aos-delay="500"
-    data-aos-duration="1000"
-  >
-    <button class="btn btn-red" type="submit">
-      Send Message
-    </button>
-  </div>
-</form>
-<div class="response"></div>
-</div>
 </section>
     <footer class="footer">
       <div class="container">
@@ -476,5 +477,34 @@
       referrerpolicy="no-referrer"
     ></script>
     <script type="module" src="js/main.js"></script>
+    <script>
+  const form = document.querySelector(".contactForm");
+  const responseDiv = document.querySelector(".response");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // prevent default form submission
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (res.ok) {
+        responseDiv.innerHTML = "<p style='color:green;'>✅ Message sent successfully!</p>";
+        form.reset();
+      } else {
+        responseDiv.innerHTML = "<p style='color:red;'>❌ Failed to send message. Try again later.</p>";
+      }
+    } catch (error) {
+      responseDiv.innerHTML = "<p style='color:red;'>❌ An error occurred. Please try again.</p>";
+    }
+  });
+</script>
+
   </body>
 </html>
